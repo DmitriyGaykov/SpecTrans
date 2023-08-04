@@ -1,0 +1,6 @@
+node-modules
+.env
+
+/node-modules
+
+*/node-modules
