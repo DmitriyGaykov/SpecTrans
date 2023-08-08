@@ -1,0 +1,17 @@
+@import "../index";
+
+.site-header {
+  @include flexer($ai: center);
+
+  top:0;
+
+  z-index: 100;
+
+  .site-navbar {
+    @include flexer();
+  }
+
+  .logo {
+    height: 65px;
+  }
+}

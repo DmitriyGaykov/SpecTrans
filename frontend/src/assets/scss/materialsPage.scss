@@ -1,0 +1,40 @@
+.materials-page {
+  .categories {
+    .category {
+      position: relative;
+
+      &.highlight {
+        &::after {
+          content: ' ';
+          position: absolute;
+          border-radius: 100000px;
+          bottom: 0;
+          width: 100%;
+          box-shadow: 0 -5px 50px 2px #27AE60;
+        }
+      }
+    }
+  }
+
+  .materials {
+    .material {
+      .material-img {
+        max-width: 350px;
+        min-width: 280px;
+        max-height:  350px;
+        min-height: 280px;
+
+        grid-area: img;
+
+        object-fit: cover;
+
+      }
+      .name {
+        font-size: 19px;
+      }
+      .name-and-date {
+        grid-area: title;
+      }
+    }
+  }
+}
