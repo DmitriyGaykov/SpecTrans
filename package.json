@@ -10,14 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.1.0",
+=======
+>>>>>>> 7969a4b02ee6d5ccb5464fcb88dce7df81ce3b95
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "flesh": "^0.0.1",
+<<<<<<< HEAD
     "jsonwebtoken": "^9.0.1",
+=======
+>>>>>>> 7969a4b02ee6d5ccb5464fcb88dce7df81ce3b95
     "mongoose": "^7.4.2",
     "mongoose-unique-validator": "^4.0.0",
     "path": "^0.12.7"
