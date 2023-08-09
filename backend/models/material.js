@@ -29,6 +29,11 @@ const MaterialSchema = new Schema({
     datePublish: {
         type: Date,
         default: new Date()
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 
