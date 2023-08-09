@@ -1,0 +1,19 @@
+@import '../index.scss';
+
+.site-footer {
+  background: #424141;
+
+  .logo {
+    height: 55px;
+  }
+
+  .politics {
+    span {
+      font-size: 10px;
+    }
+  }
+
+  nav > ul {
+    @include flexer();
+  }
+}

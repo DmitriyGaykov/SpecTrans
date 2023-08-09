@@ -1,0 +1,13 @@
+.add-material-page {
+  .add-material-form {
+    min-width: 280px;
+    button {
+      align-self: flex-start;
+    }
+
+    .desc {
+      background: none;
+      word-break: break-all;
+    }
+  }
+}

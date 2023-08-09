@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+
+  transition: all .3s ease-in-out;
+}
+
+a {
+  text-decoration: none;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+@mixin flexer($fld: row, $jc: flex-start, $ai: flex-start) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fld;
+}
+
+
+.padding {
+  padding: 0 100px;
+}
+
+.main {
+  @include flexer(column, $jc: space-between);
+  background: #F4F4F4;
+  min-height: 100vh;
+  position: relative;
+}
+
+.h2-subtitle {
+  font-size: 35px;
+  color: black;
+  font-weight: 600;
+}
+
+.text-success {
+  color: #27AE60 !important;
+}
+
+.bg-success, .btn-success {
+  background-color: #27AE60 !important;
+}
+
+.btn-success {
+  border-color: #27AE60 !important;
+}
