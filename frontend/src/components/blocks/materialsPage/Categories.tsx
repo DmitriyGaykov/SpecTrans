@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
+import {memo, useEffect, useState} from "react";
 import CategoryBlock from "./CategoryBlock";
 import {useSelector} from "react-redux";
 import {RootState, useAppDispatch} from "../../../redux/store";
 import { setCurrent} from "../../../redux/categories/categories";
 import {getCategories} from "../../../redux/categories/actions";
 
-const Categories = () => {
+const Categories = memo(() => {
     const dispatch = useAppDispatch()
     const categories = useSelector((state : RootState) => state.categories.list)
     const current = useSelector((state : RootState) => state.categories.current)
@@ -26,6 +26,6 @@ const Categories = () => {
             }
         </nav>
     )
-}
+})
 
 export default Categories

@@ -5,7 +5,6 @@ const logInWithToken = async (req, res) => {
         const token = req.body.token
 
         let user = getObjectFromToken(token)
-        console.log(user)
 
         if(user) {
             user = await User.findById(user?._id)

@@ -4,6 +4,8 @@ export const addCookie = (name: string, value: string, option: any = {
     expires: addDay(new Date(), 7)
 }) => {
     const cookie = new Cookie()
+
+    removeCookie(name)
     cookie.set(name, value, option)
 }
 
@@ -17,8 +19,8 @@ export const removeCookie = (name : string) =>{
     cookie.remove(name)
 }
 
-export const addDay = (date : Date, cday : number) : Date => {
+export const addDay = (date : Date, cday : number =  7) : Date => {
     const newDate = new Date(date)
-    newDate.setDate(newDate.getDate() + 7)
+    newDate.setDate(newDate.getDate() + cday)
     return newDate
 }

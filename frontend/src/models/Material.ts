@@ -30,3 +30,17 @@ export const materialMapper = (obj : any) => {
         return undefined
     }
 }
+
+export const materialToFormData = (material : Material, img?: File) => {
+    const fdata = new FormData()
+
+    Object.keys(material).forEach(key => {
+        fdata.set(key, (material as any)[key])
+    })
+
+    if(img != null) {
+        fdata.append('img', img)
+    }
+
+    return fdata
+}

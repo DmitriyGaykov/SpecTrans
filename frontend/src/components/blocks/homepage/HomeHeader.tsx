@@ -1,7 +1,8 @@
 import ActionButton from "../../buttons/ActionButton";
-import React from "react";
+import React, {memo} from "react";
 import back from './../../../assets/img/header_background.png'
-const HomeHeader = () => {
+
+const HomeHeader = memo(() => {
     const toForm = () => {
         document.querySelector('.question-form')?.scrollIntoView({ behavior: "smooth" })
     }
@@ -19,6 +20,6 @@ const HomeHeader = () => {
         </article>
     </div>
     )
-}
+})
 
 export default HomeHeader

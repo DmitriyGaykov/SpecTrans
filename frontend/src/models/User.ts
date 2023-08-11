@@ -1,4 +1,4 @@
-export default interface User {
+export default interface User{
     _id: string,
     name: string,
     password: string,
@@ -24,4 +24,8 @@ export const userToFormData = (user : User, img: File) => {
 
 export const isGettedUser = (user : User) => {
     return user._id !== ""
+}
+
+export const equalsUser = (user1 : User, user2 : User) => {
+    return user1?._id === user2?._id
 }

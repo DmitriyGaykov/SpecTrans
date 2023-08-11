@@ -1,6 +1,11 @@
 import ActionButton from "../buttons/ActionButton";
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
+import {memo} from "react";
 
-const QuestionFormWrapper = () => {
+const QuestionFormWrapper = memo(() => {
+    const current = useSelector((state : RootState) => state.users.current)
+
     return (
         <div className="question-form-wrapper padding w-100  d-flex justify-content-between">
             <div className="d-flex w-50 flex-wrap flex-column gap-1 justify-content-center align-items-start">
@@ -12,7 +17,7 @@ const QuestionFormWrapper = () => {
             <div className="form-wrapper container w-50 d-flex flex-column align-items-center">
                 <div className="green-block bg-success"></div>
                 <form method="post" className="question-form container border-0 bg-white p-4 form-control w-75 d-flex flex-column gap-xl-1">
-                    <input name="name" id="name" className="name form-text container form-control border-1 border-end" placeholder="Имя"/>
+                    <input name="name" id="name" className="name form-text container form-control border-1 border-end" placeholder="Имя" defaultValue={current ? current.name : ""}/>
                     <input name="phonenumber" id="phonenumber" className="phonenumber form-text container form-control  border-1 border-end" placeholder="Телефон"/>
                     <textarea name="comment" id="comment" className="comment container form-text  border-1 border-end form-control" placeholder="Комментарий"/>
                     <span className="text-black agreement-text">Соглашение о персональных данных</span>
@@ -21,6 +26,6 @@ const QuestionFormWrapper = () => {
             </div>
         </div>
     )
-}
+})
 
 export default  QuestionFormWrapper

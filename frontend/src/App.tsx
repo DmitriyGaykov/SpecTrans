@@ -41,7 +41,8 @@ const App = () => {
                   <Route path="/" element={<HomePage />}/>
                   <Route index path="/materials" element={<MaterialsPage/>}/>
 
-                  {  isGettedUser(current) ?
+                  {
+                      isGettedUser(current) ?
                       <>
                           <Route index path="/add-material" element={<AddMaterialPage/>}/>
                       </> :

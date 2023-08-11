@@ -1,6 +1,7 @@
 import InfoBlock from "./InfoBlock";
+import {memo} from "react";
 
-const AboutCompany = () => {
+const AboutCompany = memo(() => {
     return (
         <div className="about padding d-flex flex-wrap w-100">
             <div className="about-text d-flex w-50 flex-column gap-3">
@@ -15,6 +16,6 @@ const AboutCompany = () => {
             </div>
         </div>
     )
-}
+})
 
 export default AboutCompany

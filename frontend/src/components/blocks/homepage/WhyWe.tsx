@@ -4,9 +4,9 @@ import client from "../../../assets/img/client.svg";
 import price from "../../../assets/img/price.svg";
 import quality from "../../../assets/img/quality.svg";
 import operative from "../../../assets/img/operative.svg";
-import React from "react";
+import React, {memo} from "react";
 
-const WhyWe = () => {
+const WhyWe = memo(() => {
     return (
         <div className="why-we padding d-flex flex-column gap-3">
             <h2 className="h2 h2-subtitle">
@@ -21,6 +21,6 @@ const WhyWe = () => {
             </div>
         </div>
     )
-}
+})
 
 export default WhyWe

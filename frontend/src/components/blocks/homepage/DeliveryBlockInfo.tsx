@@ -2,8 +2,9 @@ import WayBlock from "./WayBlock";
 import TextBlock from "./TextBlock";
 import ImageWithText from "./ImageWithText";
 import map from './../../../assets/img/map.png'
+import {memo} from "react";
 
-const DeliveryBlockInfo = () => {
+const DeliveryBlockInfo = memo(() => {
     return (
         <div className="delivery-block-info d-flex w-100 flex-wrap padding">
             <div className="delivery-text py-4 pe-3 w-50 d-flex flex-column gap-3 justify-content-between">
@@ -24,6 +25,6 @@ const DeliveryBlockInfo = () => {
             <ImageWithText img={map} text="Зона доставки" className="w-50"/>
         </div>
     )
-}
+})
 
 export default DeliveryBlockInfo

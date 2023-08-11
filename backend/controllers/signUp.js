@@ -3,9 +3,17 @@ const User = require('./../models/user')
 const renameFile = require('./../scripts/renameFile')
 const path = require("path");
 const createToken = require("../scripts/createToken");
+const {validationResult} = require("express-validator");
+const {receiveErrors} = require("../scripts/exceptionScript");
 
 const signUp = async (req, res) => {
     try {
+        const [result, errors] = receiveErrors(req)
+
+        if(!result.isEmpty()) {
+            return res.status(403).json(errors)
+        }
+
         const img = req.files?.img
 
         const user = await User.create({

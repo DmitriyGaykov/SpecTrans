@@ -5,8 +5,9 @@ import ImageLink from "../links/ImageLink";
 import vk from './../../assets/img/vk.svg'
 import fb from './../../assets/img/facebook.svg'
 import viber from './../../assets/img/viber.svg'
+import {memo} from "react";
 
-const Footer = () => {
+const Footer = memo(() => {
     return (
         <footer className="site-footer w-100 padding py-3 d-flex align-items-center justify-content-between gap-2 flex-wrap">
             <div className="politics d-flex gap-3 align-items-center">
@@ -31,6 +32,6 @@ const Footer = () => {
             </div>
         </footer>
     )
-}
+})
 
 export default Footer
