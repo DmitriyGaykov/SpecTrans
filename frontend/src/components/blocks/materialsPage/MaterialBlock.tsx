@@ -21,7 +21,6 @@ const MaterialBlock = ({ material } : MaterialBlockType ) => {
     const dispatch = useAppDispatch()
 
     const current = useSelector((state : RootState) => state.users.current)
-    const category = useSelector((state : RootState) => state.categories.current)
     const editResult = useSelector((state : RootState) => state.materials.editResult)
 
     const [user, setUser] = useState<User>()
@@ -39,7 +38,6 @@ const MaterialBlock = ({ material } : MaterialBlockType ) => {
     useEffect(() => {
         if(editResult) {
             getOutFromEditMode()
-            dispatch(getMaterials(category?._id as string))
         }
 
         if(editResult !== undefined) {

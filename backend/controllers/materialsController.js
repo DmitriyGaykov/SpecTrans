@@ -1,6 +1,8 @@
 const Material = require("../models/material");
 const renameFile = require("../scripts/renameFile");
+const fs = require('fs')
 const path = require("path");
+const {dellFile} = require("../scripts/fileScripts");
 
 class MaterialsController {
     // [POST]
@@ -17,8 +19,10 @@ class MaterialsController {
             res.status(204).json()
 
             img.name = renameFile(img, material._id)
-            await img.mv(path.resolve(__dirname, '../public/img', img.name))
-            await Material.findByIdAndUpdate(material._id, { img: "img/" + img.name})
+            await img.mv(path.resolve(__dirname, '../public/img/materials', img.name))
+            await Material.findByIdAndUpdate(material._id, {
+                img: "img/materials/" + img.name
+            })
         } catch (e) {
             res.status(500).json(e.errors)
         }
@@ -28,7 +32,12 @@ class MaterialsController {
     async dellMaterial(req, res) {
         try {
             const idMaterial = req.params.id
-            await Material.findByIdAndRemove(idMaterial)
+            const mat = await Material.findByIdAndRemove(idMaterial)
+
+            console.log(mat.img)
+
+            dellFile(path.resolve(__dirname, '../public', mat.img))
+
             res.json({ message: 'Успешно' })
         } catch (e) {
             res.status.json(e)
@@ -45,14 +54,18 @@ class MaterialsController {
                 ...material
             }
 
+            const mat = await Material.findById(_id)
+
             const img = req.files?.img
             if(img) {
+                dellFile(path.resolve(__dirname, '../public', mat.img))
+
                 img.name = renameFile(img, _id)
-                await img.mv(path.resolve(__dirname, '../public/img/users', img.name))
+                await img.mv(path.resolve(__dirname, '../public/img/materials', img.name))
 
                 update = {
                     ...update,
-                    img: '/img/users/' + img.name
+                    img: "img/materials/" + img.name
                 }
             }
 
@@ -73,7 +86,10 @@ class MaterialsController {
                 categoryId: catId
             }).populate('categoryId').populate('userId')
 
-            materials.forEach(el => el.img = `${req.protocol}://${req.host}:${process.env.PORT}/${el.img}`)
+            materials.forEach(el => {
+                el.img = `${req.protocol}://${req.host}:${process.env.PORT}/${el.img}`
+                el.userId.img = `${req.protocol}://${req.host}:${process.env.PORT}/${el.userId.img}`
+            })
 
             await res.json(materials)
         } catch (e) {
