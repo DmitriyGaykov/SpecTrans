@@ -33,6 +33,10 @@ const App = () => {
         }
     }, [token]);
 
+    useEffect(() => {
+        console.log(current)
+    }, [current]);
+
   return (
       <div className="main d-flex gap-sm-5">
           <BrowserRouter>

@@ -10,7 +10,7 @@ import cancel from 'bootstrap-icons/icons/x-lg.svg'
 import ImgButton from "../../buttons/ImgButton";
 import JoditEditor from "jodit-react";
 import {isThisOrNull} from "../../../scripts/equalsScripts";
-import {dellMaterial, editMaterial} from "../../../redux/materials/actions";
+import {dellMaterial, editMaterial, getMaterials} from "../../../redux/materials/actions";
 import {reset} from "../../../redux/materials/materials";
 
 export type MaterialBlockType = {
@@ -21,6 +21,7 @@ const MaterialBlock = ({ material } : MaterialBlockType ) => {
     const dispatch = useAppDispatch()
 
     const current = useSelector((state : RootState) => state.users.current)
+    const category = useSelector((state : RootState) => state.categories.current)
     const editResult = useSelector((state : RootState) => state.materials.editResult)
 
     const [user, setUser] = useState<User>()
@@ -38,6 +39,7 @@ const MaterialBlock = ({ material } : MaterialBlockType ) => {
     useEffect(() => {
         if(editResult) {
             getOutFromEditMode()
+            dispatch(getMaterials(category?._id as string))
         }
 
         if(editResult !== undefined) {
