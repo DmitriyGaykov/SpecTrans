@@ -37,7 +37,7 @@ export const signInWithToken = createAsyncThunk(
     async (token : string, { rejectWithValue }) => {
         try {
             const resp = await axios.post('/api/auth/token-login',{token})
-            return userMapper(resp.data as User)
+            return userMapper(resp.data)
         } catch (e) {
             return rejectWithValue(e)
         }

@@ -5,7 +5,6 @@ const getCategories = async (req, res) => {
         const cats = await Category.find({ })
         await res.json(cats)
     } catch (e) {
-        console.warn(e)
         await res.json([])
     }
 }

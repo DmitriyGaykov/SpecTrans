@@ -2,13 +2,15 @@ export default interface User{
     _id: string,
     name: string,
     password: string,
-    img: string
+    img: string,
+    role: string
 }
 
-export const userMapper = (user : User) => {
+export const userMapper = (user : any) => {
     return user ? {
         ...user,
-        _id: user._id
+        _id: user?._id,
+        role: user?.role?.role
     } as User  : undefined
 }
 
@@ -23,7 +25,7 @@ export const userToFormData = (user : User, img: File) => {
 }
 
 export const isGettedUser = (user : User) => {
-    return user._id !== ""
+    return user && user._id !== ""
 }
 
 export const equalsUser = (user1 : User, user2 : User) => {

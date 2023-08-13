@@ -25,7 +25,8 @@ const AuthPage = () => {
             _id: "",
             name,
             password,
-            img: ""
+            img: "",
+            role: ""
         }
 
         dispatch(signIn(user))

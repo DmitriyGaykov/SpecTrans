@@ -35,7 +35,7 @@ export const materialToFormData = (material : Material, img?: File) => {
     const fdata = new FormData()
 
     Object.keys(material).forEach(key => {
-        fdata.set(key, (material as any)[key])
+        fdata.set(key, (material as any)[key] || "")
     })
 
     if(img != null) {

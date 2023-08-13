@@ -7,7 +7,7 @@ const logInWithToken = async (req, res) => {
         let user = getObjectFromToken(token)
 
         if(user) {
-            user = await User.findById(user?._id)
+            user = await User.findById(user?._id).populate('role')
             res.json(user)
         } else {
             res.status(403).json({ message: 'Не авторизирован!' })

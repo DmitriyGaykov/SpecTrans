@@ -21,7 +21,8 @@ const DEFAULT : User = {
     _id: "",
     name: "",
     password: "",
-    img: ""
+    img: "",
+    role: ""
 }
 
 const initialState : UserState = {

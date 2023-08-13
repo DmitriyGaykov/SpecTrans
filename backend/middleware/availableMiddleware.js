@@ -4,12 +4,7 @@ const {generateException} = require("../scripts/exceptionScript");
 const Material = require("../models/material");
 const availableMiddleware = async (req, res, next) => {
     try {
-        const token = req.cookies[token_name]
-        const obj = getObjectFromToken(token)
-
-        if(!obj) {
-            throw generateException('obj', 'В доступе отказано!')
-        }
+        const obj = req.tokenObject
 
         const matId = req.params.id
         const userId = obj?._id

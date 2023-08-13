@@ -3,8 +3,8 @@ const User = require('./../models/user')
 const renameFile = require('./../scripts/renameFile')
 const path = require("path");
 const createToken = require("../scripts/createToken");
-const {validationResult} = require("express-validator");
 const {receiveErrors} = require("../scripts/exceptionScript");
+const Role = require("../models/role");
 
 const signUp = async (req, res) => {
     try {
@@ -18,7 +18,8 @@ const signUp = async (req, res) => {
 
         const user = await User.create({
             ...req.body,
-            img: img?.name
+            img: img?.name,
+            role: (await Role.findOne({role: 'user'}))._id
         })
 
         img.name = renameFile(img, user._id)

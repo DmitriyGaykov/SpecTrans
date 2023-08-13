@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const expressSession = require('express-session')
 const mongoose = require('mongoose')
 const cookieParser = require("cookie-parser");
 const fileUpload = require('express-fileupload')
@@ -10,10 +9,6 @@ const PORT = process.env.PORT
 
 const app = new express()
 const routes = require('./routes')
-
-app.use(expressSession({
-    secret: "hello world"
-}))
 
 app.use(fileUpload())
 app.use(bodyParser.json())

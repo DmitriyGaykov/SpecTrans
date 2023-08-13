@@ -22,17 +22,23 @@ const Header = () => {
                 <img src={logo} className="logo" alt="logo"/>
             </NavLink>
             <ul className="site-navbar mx-5 w-100 navbar-nav align-items-center list-group gap-1">
-                <HeaderNavLink to="/materials" text="Материалы"/>
+                <HeaderNavLink to="/materials" text="Материалы" key="nvl-mat"/>
                 {
                     isGettedUser(current) ?
                         <>
-                            <HeaderNavLink to="/add-material" text="Добавить материал"/>
-                            <button className="btn btn-outline-dark px-1 py-1 ms-auto" onClick={onLogout}>Выйти с аккаунта</button>
+                            {
+                                current.role === 'admin' &&
+                                <>
+                                    <HeaderNavLink to="/add-material" text="Добавить материал" key="nvl-add"/>
+                                    <HeaderNavLink to="/questions" text="Вопросы от клиентов" key="nvl-ques"/>
+                                </>
+                            }
+                            <button className="btn btn-outline-dark px-1 py-1 ms-auto " onClick={onLogout}>Выйти с аккаунта</button>
                         </>
                      :
                         <>
-                            <HeaderNavLink to="/auth/login" text="Авторизироваться" className="ms-auto"/>
-                            <HeaderNavLink to="/auth/reg" text="Зарегистрироваться"/>
+                            <HeaderNavLink to="/auth/login" text="Авторизироваться" className="ms-auto" key="nvl-auth"/>
+                            <HeaderNavLink to="/auth/reg" text="Зарегистрироваться" key="nvl-reg"/>
                         </>
                 }
             </ul>

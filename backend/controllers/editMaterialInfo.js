@@ -24,8 +24,6 @@ const editMaterialInfo = async (req, res) => {
 
         const updMaterial = await Material.findByIdAndUpdate(_id, update).populate('userId')
 
-        console.log(Object.assign(updMaterial, update))
-
         res.json(updMaterial)
     } catch (e) {
         res.status(400).json(e)

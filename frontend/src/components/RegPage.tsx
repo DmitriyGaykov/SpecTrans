@@ -26,7 +26,8 @@ const RegPage = () => {
             _id: "",
             name,
             password,
-            img: ""
+            img: "",
+            role: ""
         }
 
         dispatch(signUp({
