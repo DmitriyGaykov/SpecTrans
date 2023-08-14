@@ -13,10 +13,6 @@ const QuestionFormWrapper = memo(() => {
 
     const dispatch = useAppDispatch()
 
-    const [name, setName] = useState<string | undefined>()
-    const [phone, setPhone] = useState<string | undefined>()
-    const [comment, setComment] = useState<string | undefined>()
-
     const iname = useRef<HTMLInputElement>(null)
     const iphone = useRef<HTMLInputElement>(null)
     const tacomment = useRef<HTMLTextAreaElement>(null)
@@ -39,6 +35,10 @@ const QuestionFormWrapper = memo(() => {
     }, [success]);
 
     const onSubmit = () => {
+        const name = iname.current?.value
+        const phone = iphone.current?.value
+        const comment = tacomment.current?.value
+
         const question= {
             name,
             phone,
@@ -79,7 +79,6 @@ const QuestionFormWrapper = memo(() => {
                         ref={iname}
                         className="name form-text container form-control border-1 border-end"
                         placeholder="Имя"
-                        onChange={e => setName(e.target?.value)}
                         defaultValue={current ? current.name : ""}
                     />
 
@@ -89,7 +88,6 @@ const QuestionFormWrapper = memo(() => {
                         ref={iphone}
                         className="phonenumber form-text container form-control  border-1 border-end"
                         placeholder="Телефон"
-                        onChange={e => setPhone(e.target?.value)}
                     />
 
                     <textarea
@@ -98,7 +96,6 @@ const QuestionFormWrapper = memo(() => {
                         ref={tacomment}
                         className="comment container form-text  border-1 border-end form-control"
                         placeholder="Комментарий"
-                        onChange={e => setComment(e.target?.value)}
                     />
 
                     {

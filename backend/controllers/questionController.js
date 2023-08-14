@@ -1,5 +1,7 @@
 const {receiveErrors, generateException} = require("../scripts/exceptionScript");
 const Question = require("../models/question");
+const {addLastVisit} = require("../scripts/questionsScript");
+const {getCheckStrFromRequest} = require("../scripts/requestScripts");
 
 class QuestionController {
     // [POST]
@@ -19,7 +21,9 @@ class QuestionController {
 
             await question.save()
 
-            res.json({ message: 'Успех!' })
+            res.json(question)
+
+            addLastVisit(getCheckStrFromRequest(req))
         } catch (e) {
             res.status(400).json(e)
         }

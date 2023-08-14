@@ -16,7 +16,8 @@
         },
         middleware: getDefaultMiddleware => {
             return getDefaultMiddleware()
-                .concat(currentCategoryMiddleware).concat(getCategoriesFullMiddleware.middleware);
+                .concat(currentCategoryMiddleware)
+                .concat(getCategoriesFullMiddleware.middleware);
         },
         devTools: true
     })

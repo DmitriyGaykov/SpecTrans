@@ -7,6 +7,7 @@ const availableMiddleware = require('./middleware/availableMiddleware')
 const questionMiddleware = require('./middleware/questionMiddlewares')
 const himAdminMiddleware = require('./middleware/himAdminMiddleware')
 const generateTokenObjectMiddleware = require("./middleware/generateTokenObjectMiddleware");
+const addQuestionMiddleware = require('./middleware/addQuestionMiddleware')
 
 const materialController = require('./controllers/materialsController')
 const questionController = require('./controllers/questionController')
@@ -21,7 +22,7 @@ routes.post('/api/add-material', materialController.addMaterial)
 routes.post('/api/auth/reg', [...validationMiddleware], authController.signUp)
 routes.post('/api/auth/login', [...validationMiddleware.slice(0, 1)], authController.logIn)
 routes.post('/api/auth/token-login', generateTokenObjectMiddleware, authController.logInWithToken)
-routes.post('/api/add-question', [...questionMiddleware], questionController.addQuestion)
+routes.post('/api/add-question', [addQuestionMiddleware, ...questionMiddleware], questionController.addQuestion)
 
 routes.put(
     '/api/materials/edit/:id',

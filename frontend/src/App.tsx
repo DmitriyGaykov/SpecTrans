@@ -15,6 +15,8 @@ import {signInWithToken} from "./redux/users/actions";
 import {addCookie, getCookie} from "./scripts/cookieScripts";
 import {token_name} from "./config";
 import {setTokenValue} from "./redux/users/users";
+import QuestionsWrapper from "./components/blocks/questionsPage/QuestionsWrapper";
+import QuestionsPage from "./components/QuestionsPage";
 
 const App = () => {
     const dispatch = useAppDispatch()
@@ -49,6 +51,7 @@ const App = () => {
                       isGettedUser(current) ?
                       <>
                           <Route index path="/add-material" element={<AddMaterialPage/>}/>
+                          <Route index path="/questions" element={<QuestionsPage/>}/>
                       </> :
                       <>
                           <Route index path="/auth/reg" element={<RegPage/>}/>
