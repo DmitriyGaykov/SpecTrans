@@ -18,13 +18,17 @@ module.exports = {
 
     startCleaner() {
         setInterval(() => {
-            usersAndLastAdding.forEach((value, key) => {
-                const diff = differenceInSeconds(value, new Date())
+            try {
+                usersAndLastAdding.forEach((value, key) => {
+                    const diff = differenceInSeconds(value, new Date())
 
-                if(diff > waitTime) {
-                    usersAndLastAdding.delete(key)
-                }
-            })
+                    if (diff > waitTime) {
+                        usersAndLastAdding.delete(key)
+                    }
+                })
+            } catch (e) {
+
+            }
         }, waitTime)
     }
 }

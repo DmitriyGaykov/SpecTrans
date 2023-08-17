@@ -5,7 +5,6 @@ const createToken = require("../scripts/createToken");
 const Role = require("../models/role");
 const renameFile = require("../scripts/renameFile");
 const path = require("path");
-const getObjectFromToken = require("../scripts/getObjectFromToken");
 
 class AuthController {
     // [POST]
@@ -50,18 +49,21 @@ class AuthController {
             const user = await User.create({
                 ...req.body,
                 img: img?.name,
-                role: (await Role.findOne({role: 'user'}))._id
+                role: (await Role.findOne({role: 'user'}))?._id
             })
 
             img.name = renameFile(img, user._id)
             await img.mv(path.resolve(__dirname, '../public/img/users', img.name))
             await User.findByIdAndUpdate(user._id, { img: '/img/users/' + img.name })
 
-            const token = createToken({ _id: user._id, name: user.name })
+            const token = createToken({
+                _id: user._id,
+                name: user.name
+            })
 
-            res.status(200).json({ token })
+            res.json({ token })
         } catch (e) {
-            res.status(500).json(e.errors)
+            res.status(500).json(e)
         }
     }
 

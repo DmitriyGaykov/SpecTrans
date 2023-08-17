@@ -23,6 +23,7 @@ routes.post('/api/auth/reg', [...validationMiddleware], authController.signUp)
 routes.post('/api/auth/login', [...validationMiddleware.slice(0, 1)], authController.logIn)
 routes.post('/api/auth/token-login', generateTokenObjectMiddleware, authController.logInWithToken)
 routes.post('/api/add-question', [addQuestionMiddleware, ...questionMiddleware], questionController.addQuestion)
+routes.post('/api/category/add', [generateTokenObjectMiddleware, himAdminMiddleware], categoryController.addCategory)
 
 routes.put(
     '/api/materials/edit/:id',

@@ -10,7 +10,6 @@ const PORT = process.env.PORT
 
 const app = new express()
 const routes = require('./routes')
-const {ca} = require("date-fns/locale");
 const {startCleaner} = require("./scripts/questionsScript");
 
 app.use(expressSession({
@@ -24,21 +23,23 @@ app.use(cookieParser())
 
 app.use(routes)
 
-
 const start = async () => {
     try {
-        await mongoose.connect(process.env.STRINGCONNECTION, {useNewUrlParser: true})
-        console.log('MongoDb was connected')
+        await mongoose.connect(process.env.STRINGCONNECTION, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+
+        console.log('MongoDB started working')
     } catch (e) {
-        console.log('MongoDb dont connected')
-        return;
+        console.warn(e)
     }
 
-    startCleaner()
-
-    app.listen(PORT, () => {
+    await app.listen(PORT, () => {
         console.log(`Server started working with port ${PORT}`)
     })
+
+    startCleaner()
 }
 
 start()
